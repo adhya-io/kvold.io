@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
         header {
             background: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
@@ -193,13 +194,13 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .industry-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
         }
 
         .industry-icon {
@@ -319,7 +320,7 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
 
@@ -391,7 +392,7 @@
 
         .white-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Contact Section */
@@ -560,7 +561,24 @@
             display: none;
         }
     </style>
+    <script>
+        (function () {
+            // temporary password
+            const PASSWORD = "mysecret123";
+
+            // ask once per browser (session)
+            if (!sessionStorage.getItem("unlocked")) {
+                let input = prompt("This page is under construction.\nEnter password to proceed:");
+                if (input !== PASSWORD) {
+                    document.body.innerHTML = "<h2 style='text-align:center;margin-top:20%'>🚧 Work in progress — not yet available 🚧</h2>";
+                    throw new Error("Locked");
+                }
+                sessionStorage.setItem("unlocked", "true");
+            }
+        })();
+    </script>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -583,7 +601,9 @@
         <section class="hero">
             <div class="container">
                 <h1>Transform Your Business with AI or Risk Being Left Behind</h1>
-                <p>In today's competitive landscape, small businesses must embrace AI to stay efficient and competitive. Our proven 4-step journey helps you implement AI solutions that streamline operations, reduce costs, and accelerate growth - starting at just $1,000.</p>
+                <p>In today's competitive landscape, small businesses must embrace AI to stay efficient and competitive.
+                    Our proven 4-step journey helps you implement AI solutions that streamline operations, reduce costs,
+                    and accelerate growth - starting at just $1,000.</p>
                 <div class="hero-buttons">
                     <a href="#journey" class="cta-button">Start Your AI Journey</a>
                     <a href="#use-cases" class="secondary-button">Learn More</a>
@@ -595,7 +615,8 @@
         <section class="pricing">
             <div class="container">
                 <h2>Stay On Top or Fall Behind</h2>
-                <p>Small businesses that aren't using AI risk becoming obsolete. Our AI marketing campaigns ensure you stay ahead of the competition and make your business more profitable than ever!</p>
+                <p>Small businesses that aren't using AI risk becoming obsolete. Our AI marketing campaigns ensure you
+                    stay ahead of the competition and make your business more profitable than ever!</p>
                 <div class="price">Starting at Only $1,000</div>
             </div>
         </section>
@@ -605,7 +626,7 @@
             <div class="container">
                 <h2>AI Use Cases for Every Industry</h2>
                 <p class="industries-subtitle">Discover how AI can revolutionize your specific business sector</p>
-                
+
                 <div class="industries-grid">
                     <!-- Retail & E-commerce -->
                     <div class="industry-card">
@@ -669,7 +690,8 @@
 
                     <!-- Professional Services -->
                     <div class="industry-card">
-                        <img src="assets/icons/professional-services-icon.svg" alt="Professional Services" class="industry-icon">
+                        <img src="assets/icons/professional-services-icon.svg" alt="Professional Services"
+                            class="industry-icon">
                         <h3>Professional Services</h3>
                         <ul>
                             <li>Document processing automation</li>
@@ -686,31 +708,36 @@
         <section class="journey" id="journey">
             <div class="container">
                 <h2>Your 4-Step AI Transformation Journey</h2>
-                <p class="journey-subtitle">A proven process to implement AI solutions that drive real business results</p>
-                
+                <p class="journey-subtitle">A proven process to implement AI solutions that drive real business results
+                </p>
+
                 <div class="journey-steps">
                     <div class="journey-step">
                         <div class="step-number">1</div>
                         <h3>Discovery</h3>
-                        <p>We analyze your current business processes, identify inefficiencies, and discover the biggest impact on your business.</p>
+                        <p>We analyze your current business processes, identify inefficiencies, and discover the biggest
+                            impact on your business.</p>
                     </div>
-                    
+
                     <div class="journey-step">
                         <div class="step-number">2</div>
                         <h3>Strategy</h3>
-                        <p>Create a comprehensive AI implementation roadmap with clear milestones. Prioritize solutions based on ROI potential within your budget.</p>
+                        <p>Create a comprehensive AI implementation roadmap with clear milestones. Prioritize solutions
+                            based on ROI potential within your budget.</p>
                     </div>
-                    
+
                     <div class="journey-step">
                         <div class="step-number">3</div>
                         <h3>Implementation</h3>
-                        <p>Deploy AI solutions with minimal disruption to your operations. Full training and support for seamless integration with existing systems.</p>
+                        <p>Deploy AI solutions with minimal disruption to your operations. Full training and support for
+                            seamless integration with existing systems.</p>
                     </div>
-                    
+
                     <div class="journey-step">
                         <div class="step-number">4</div>
                         <h3>Optimization</h3>
-                        <p>Continuously monitor performance, make adjustments, and optimize efficiency and ROI from your AI investment.</p>
+                        <p>Continuously monitor performance, make adjustments, and optimize efficiency and ROI from your
+                            AI investment.</p>
                     </div>
                 </div>
             </div>
@@ -721,7 +748,7 @@
             <div class="container">
                 <h2>Why Choose kVold.biz</h2>
                 <p class="why-choose-subtitle">The trusted partner for small business AI transformation</p>
-                
+
                 <div class="features-grid">
                     <div class="feature-card">
                         <img src="assets/icons/expertise-icon.svg" alt="Deep AI Expertise" class="feature-icon">
@@ -763,7 +790,8 @@
         <section class="cta-section">
             <div class="container">
                 <h2>Don't Let Your Competition Leave You Behind</h2>
-                <p>Every day you wait is another day your competitors gain an advantage. Start your AI transformation today and secure your business's future.</p>
+                <p>Every day you wait is another day your competitors gain an advantage. Start your AI transformation
+                    today and secure your business's future.</p>
                 <a href="#contact" class="white-button">Schedule Your Free Consultation</a>
             </div>
         </section>
@@ -772,8 +800,9 @@
         <section class="contact" id="contact">
             <div class="container">
                 <h2>Get Started Today</h2>
-                <p class="contact-subtitle">Ready to transform your business? Send us a message and we'll get back to you within 24 hours.</p>
-                
+                <p class="contact-subtitle">Ready to transform your business? Send us a message and we'll get back to
+                    you within 24 hours.</p>
+
                 <form class="contact-form" id="contactForm">
                     <div class="success-message" id="successMessage">
                         Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
@@ -781,7 +810,7 @@
                     <div class="error-message" id="errorMessage">
                         Sorry, there was an error sending your message. Please try again or contact us directly.
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
@@ -792,27 +821,32 @@
                             <input type="text" id="jobTitle" name="jobTitle" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="businessDescription">Business Description</label>
-                        <textarea id="businessDescription" name="businessDescription" placeholder="Briefly describe your business, industry, and what you do (e.g., online retail store selling handmade crafts, local dental practice, manufacturing automotive parts, etc.)" required></textarea>
+                        <textarea id="businessDescription" name="businessDescription"
+                            placeholder="Briefly describe your business, industry, and what you do (e.g., online retail store selling handmade crafts, local dental practice, manufacturing automotive parts, etc.)"
+                            required></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="problemStatement">Problem Statement</label>
-                        <textarea id="problemStatement" name="problemStatement" placeholder="What is the problem you think AI will solve for you? (e.g., too much time spent on manual tasks, difficulty managing inventory, customer service bottlenecks, etc.)" required></textarea>
+                        <textarea id="problemStatement" name="problemStatement"
+                            placeholder="What is the problem you think AI will solve for you? (e.g., too much time spent on manual tasks, difficulty managing inventory, customer service bottlenecks, etc.)"
+                            required></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="message">Additional Information</label>
-                        <textarea id="message" name="message" placeholder="Any additional details about your current processes, budget considerations, timeline, or specific questions about AI implementation..."></textarea>
+                        <textarea id="message" name="message"
+                            placeholder="Any additional details about your current processes, budget considerations, timeline, or specific questions about AI implementation..."></textarea>
                     </div>
-                    
+
                     <button type="submit" class="submit-button" id="submitButton">Send Message</button>
                 </form>
             </div>
@@ -845,22 +879,22 @@
         });
 
         // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const submitButton = document.getElementById('submitButton');
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
-            
+
             // Hide previous messages
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
-            
+
             // Show loading state
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             this.classList.add('loading');
-            
+
             // Collect form data
             const formData = {
                 firstName: document.getElementById('firstName').value,
@@ -872,7 +906,7 @@
                 timestamp: new Date().toISOString(),
                 source: 'kVold.biz Contact Form'
             };
-            
+
             try {
                 // Replace with your actual API endpoint
                 const response = await fetch('/api/contact', {
@@ -882,76 +916,76 @@
                     },
                     body: JSON.stringify(formData)
                 });
-                
+
                 if (response.ok) {
                     successMessage.style.display = 'block';
                     this.reset();
-<script>
-(function(){
-  function $(id){ return document.getElementById(id); }
+                    <script>
+                        (function(){
+                            function $(id) { return document.getElementById(id); }
   const form = $("contactForm");
-  const successEl = $("successMessage");
-  const errorEl = $("errorMessage");
-  const submitBtn = $("submitButton");
-  let csrfToken = null;
+                        const successEl = $("successMessage");
+                        const errorEl = $("errorMessage");
+                        const submitBtn = $("submitButton");
+                        let csrfToken = null;
 
-  async function getCSRF(){
+                        async function getCSRF(){
     try{
-      const res = await fetch('/api/csrf', { credentials: 'include' });
-      csrfToken = res.headers.get('X-CSRF-Token');
+      const res = await fetch('/api/csrf', {credentials: 'include' });
+                        csrfToken = res.headers.get('X-CSRF-Token');
     }catch(e){
-      console.error('CSRF fetch failed', e);
+                            console.error('CSRF fetch failed', e);
     }
   }
 
-  function setState(kind, msg){
-    if(successEl){ successEl.style.display = 'none'; }
-    if(errorEl){ errorEl.style.display = 'none'; }
-    if(kind==='ok' && successEl){ successEl.style.display = 'block'; if(msg) successEl.textContent = msg; }
-    if(kind==='err' && errorEl){ errorEl.style.display = 'block'; if(msg) errorEl.textContent = msg; }
+                        function setState(kind, msg){
+    if(successEl){successEl.style.display = 'none'; }
+                        if(errorEl){errorEl.style.display = 'none'; }
+                        if(kind==='ok' && successEl){successEl.style.display = 'block'; if(msg) successEl.textContent = msg; }
+                        if(kind==='err' && errorEl){errorEl.style.display = 'block'; if(msg) errorEl.textContent = msg; }
   }
 
-  document.addEventListener('DOMContentLoaded', async function(){
-    await getCSRF();
-    if(!form) return;
+                        document.addEventListener('DOMContentLoaded', async function(){
+                            await getCSRF();
+                        if(!form) return;
 
-    form.addEventListener('submit', async function(e){
-      e.preventDefault();
-      setState(); // clear
-      if(submitBtn) submitBtn.disabled = True === true; // trick: won't throw if absent
+                        form.addEventListener('submit', async function(e){
+                            e.preventDefault();
+                        setState(); // clear
+                        if(submitBtn) submitBtn.disabled = True === true; // trick: won't throw if absent
 
-      const payload = {
-        firstName: (document.getElementById('firstName')?.value || '').trim(),
-        jobTitle: (document.getElementById('jobTitle')?.value || '').trim(),
-        email: (document.getElementById('email')?.value || '').trim(),
-        business: (document.getElementById('businessDescription')?.value || '').trim(),
-        problem: (document.getElementById('problemStatement')?.value || '').trim(),
-        additional: (document.getElementById('message')?.value || '').trim()
+                        const payload = {
+                            firstName: (document.getElementById('firstName')?.value || '').trim(),
+                        jobTitle: (document.getElementById('jobTitle')?.value || '').trim(),
+                        email: (document.getElementById('email')?.value || '').trim(),
+                        business: (document.getElementById('businessDescription')?.value || '').trim(),
+                        problem: (document.getElementById('problemStatement')?.value || '').trim(),
+                        additional: (document.getElementById('message')?.value || '').trim()
       };
 
-      try{
+                        try{
         const res = await fetch('/api/contact', {
-          method: 'POST',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': csrfToken || ''
+                            method: 'POST',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken || ''
           },
-          body: JSON.stringify(payload)
+                        body: JSON.stringify(payload)
         });
-        if(!res.ok){
+                        if(!res.ok){
           const t = await res.text();
-          throw new Error('API ' + res.status + ' ' + t);
+                        throw new Error('API ' + res.status + ' ' + t);
         }
-        setState('ok');
-        this.reset();
+                        setState('ok');
+                        this.reset();
       }catch(err){
-        console.error(err);
-        setState('err', 'Could not send. Please try again.');
+                            console.error(err);
+                        setState('err', 'Could not send. Please try again.');
       }finally{
         if(submitBtn) submitBtn.disabled = false;
       }
     });
   });
 })();
-</script>
+    </script>
