@@ -560,6 +560,13 @@
             text-align: center;
             display: none;
         }
+
+        /* Highlight effect for pre-filled field */
+        .highlight-field {
+            border-color: #10b981 !important;
+            background-color: #f0fdf4;
+            transition: all 0.3s ease;
+        }
     </style>
     <script>
         (function () {
@@ -570,7 +577,7 @@
             if (!sessionStorage.getItem("unlocked")) {
                 let input = prompt("This page is under construction.\nEnter password to proceed:");
                 if (input !== PASSWORD) {
-                    document.body.innerHTML = "<h2 style='text-align:center;margin-top:20%'>🚧 Work in progress — not yet available 🚧</h2>";
+                    document.body.innerHTML = "<h2 style='text-align:center;margin-top:20%'>🚧 Work in progress – not yet available 🚧</h2>";
                     throw new Error("Locked");
                 }
                 sessionStorage.setItem("unlocked", "true");
@@ -592,7 +599,7 @@
                 <li><a href="#why-us">Why Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#contact" class="cta-button">Schedule</a>
+            <a href="#contact" class="cta-button schedule-button">Schedule</a>
         </nav>
     </header>
 
@@ -792,7 +799,7 @@
                 <h2>Don't Let Your Competition Leave You Behind</h2>
                 <p>Every day you wait is another day your competitors gain an advantage. Start your AI transformation
                     today and secure your business's future.</p>
-                <a href="#contact" class="white-button">Schedule Your Free Consultation</a>
+                <a href="#contact" class="white-button schedule-button">Schedule Your Free Consultation</a>
             </div>
         </section>
 
@@ -864,11 +871,39 @@
     </footer>
 
     <script>
+        // Function to handle schedule button clicks
+        function handleScheduleClick() {
+            const messageField = document.getElementById('message');
+            if (messageField) {
+                messageField.value = "I would like an appointment. Please send me available slots and a link to be able to schedule a live session.";
+                messageField.classList.add('highlight-field');
+                
+                // Remove highlight after 3 seconds
+                setTimeout(() => {
+                    messageField.classList.remove('highlight-field');
+                }, 3000);
+                
+                // Scroll to the message field smoothly
+                setTimeout(() => {
+                    messageField.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 200);
+            }
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
+                
+                // Check if this is a schedule button
+                if (this.classList.contains('schedule-button')) {
+                    handleScheduleClick();
+                }
+                
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -879,113 +914,70 @@
         });
 
         // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const submitButton = document.getElementById('submitButton');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
+            const submitButton = document.getElementById('submitButton');
 
-            // Hide previous messages
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
+            if (form) {
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
 
-            // Show loading state
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            this.classList.add('loading');
+                    // Hide previous messages
+                    if (successMessage) successMessage.style.display = 'none';
+                    if (errorMessage) errorMessage.style.display = 'none';
 
-            // Collect form data
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                jobTitle: document.getElementById('jobTitle').value,
-                email: document.getElementById('email').value,
-                businessDescription: document.getElementById('businessDescription').value,
-                problemStatement: document.getElementById('problemStatement').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toISOString(),
-                source: 'kVold.biz Contact Form'
-            };
+                    // Show loading state
+                    if (submitButton) {
+                        submitButton.textContent = 'Sending...';
+                        submitButton.disabled = true;
+                    }
+                    this.classList.add('loading');
 
-            try {
-                // Replace with your actual API endpoint
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
+                    // Collect form data
+                    const formData = {
+                        firstName: document.getElementById('firstName')?.value || '',
+                        jobTitle: document.getElementById('jobTitle')?.value || '',
+                        email: document.getElementById('email')?.value || '',
+                        businessDescription: document.getElementById('businessDescription')?.value || '',
+                        problemStatement: document.getElementById('problemStatement')?.value || '',
+                        message: document.getElementById('message')?.value || '',
+                        timestamp: new Date().toISOString(),
+                        source: 'kVold.biz Contact Form'
+                    };
 
-                if (response.ok) {
-                    successMessage.style.display = 'block';
-                    this.reset();
-                    <script>
-                        (function(){
-                            function $(id) { return document.getElementById(id); }
-  const form = $("contactForm");
-                        const successEl = $("successMessage");
-                        const errorEl = $("errorMessage");
-                        const submitBtn = $("submitButton");
-                        let csrfToken = null;
-
-                        async function getCSRF(){
-    try{
-      const res = await fetch('/api/csrf', {credentials: 'include' });
-                        csrfToken = res.headers.get('X-CSRF-Token');
-    }catch(e){
-                            console.error('CSRF fetch failed', e);
-    }
-  }
-
-                        function setState(kind, msg){
-    if(successEl){successEl.style.display = 'none'; }
-                        if(errorEl){errorEl.style.display = 'none'; }
-                        if(kind==='ok' && successEl){successEl.style.display = 'block'; if(msg) successEl.textContent = msg; }
-                        if(kind==='err' && errorEl){errorEl.style.display = 'block'; if(msg) errorEl.textContent = msg; }
-  }
-
-                        document.addEventListener('DOMContentLoaded', async function(){
-                            await getCSRF();
-                        if(!form) return;
-
-                        form.addEventListener('submit', async function(e){
-                            e.preventDefault();
-                        setState(); // clear
-                        if(submitBtn) submitBtn.disabled = True === true; // trick: won't throw if absent
-
-                        const payload = {
-                            firstName: (document.getElementById('firstName')?.value || '').trim(),
-                        jobTitle: (document.getElementById('jobTitle')?.value || '').trim(),
-                        email: (document.getElementById('email')?.value || '').trim(),
-                        business: (document.getElementById('businessDescription')?.value || '').trim(),
-                        problem: (document.getElementById('problemStatement')?.value || '').trim(),
-                        additional: (document.getElementById('message')?.value || '').trim()
-      };
-
-                        try{
-        const res = await fetch('/api/contact', {
+                    try {
+                        // Replace with your actual API endpoint
+                        const response = await fetch('/api/contact', {
                             method: 'POST',
-                        credentials: 'include',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        'X-CSRF-Token': csrfToken || ''
-          },
-                        body: JSON.stringify(payload)
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData)
+                        });
+
+                        if (response.ok) {
+                            if (successMessage) successMessage.style.display = 'block';
+                            this.reset();
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        if (errorMessage) errorMessage.style.display = 'block';
+                    } finally {
+                        // Reset loading state
+                        if (submitButton) {
+                            submitButton.textContent = 'Send Message';
+                            submitButton.disabled = false;
+                        }
+                        this.classList.remove('loading');
+                    }
+                });
+            }
         });
-                        if(!res.ok){
-          const t = await res.text();
-                        throw new Error('API ' + res.status + ' ' + t);
-        }
-                        setState('ok');
-                        this.reset();
-      }catch(err){
-                            console.error(err);
-                        setState('err', 'Could not send. Please try again.');
-      }finally{
-        if(submitBtn) submitBtn.disabled = false;
-      }
-    });
-  });
-})();
     </script>
+</body>
+
+</html>
